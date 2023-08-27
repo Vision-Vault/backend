@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Posts</h1>
+  <ul>
+    {% for post in posts %}
+      <li>
+        <h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+        <p>{{ post.description }}</p>
+        <p>Status: {{ post.get_status_display }}</p>
+      </li>
+    {% empty %}
+      <li>No posts available.</li>
+    {% endfor %}
+  </ul>
+
+  {% if posts.has_other_pages %}
+    <div class="pagination">
+      <span class="step-links">
+        {% if posts.has_previous %}
+          <a href="?status={{ status }}&page=1">&laquo; first</a>
+          <a href="?status={{ status }}&page={{ posts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+          Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span>
+
+        {% if posts.has_next %}
+          <a href="?status={{ status }}&page={{ posts.next_page_number }}">next</a>
+          <a href="?status={{ status }}&page={{ posts.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+      </span>
+    </div>
+  {% endif %}
+{% endblock %}
