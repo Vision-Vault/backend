@@ -7,11 +7,8 @@ from django.http import HttpRequest, HttpResponse
 
 
 class PostListView(ListView):
-    model = Post
+    # model = Post
     template_name = 'posts/post_detail.html'
     context_object_name = 'posts'
-    paginate_by = 10
+    queryset = Post.objects.filter(status = Post.ACTIVE)
 
-    def get_queryset(self):
-        status = self.kwargs.get('status')
-        return Post.objects.filter(status=status)
