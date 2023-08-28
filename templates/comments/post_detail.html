@@ -36,6 +36,13 @@
                               <div>
                                   {{ comment.body }}
                               </div>
+                              <small>
+                                <div>
+                                  <a href="{% url 'comment_detail' post.slug comment.id %}" >Replay </a>
+                                  <a href="{% url 'update_comment' post.slug comment.id %}" > Update </a>
+                                  <a href="{% url 'delete_comment' post.slug comment.id %}" > Delete </a>
+                                </div>
+                            </small>
                           </div>
                       </article>
 
