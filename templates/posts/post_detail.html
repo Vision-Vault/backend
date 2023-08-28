@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Posts</h1>
+  <ul>
+    {% for post in posts %}
+      <div>
+        <h2>{{post.title}}  </h2>
+        <h2>{{post.description}}  </h2>
+        <h2>{{post.status}}  </h2>
+        <h2>{{post.created_at}}  </h2>
+        <h2>{{post.funding_goal}} JD  </h2>
+      </div>
+    {% endfor %}
+  </ul>
+
+
+{% endblock %}
