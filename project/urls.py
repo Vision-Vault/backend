@@ -31,9 +31,9 @@ urlpatterns = [
         "api/token/refresh/",
         jwt_views.TokenRefreshView.as_view(),
         name="token_refresh",
-    )
+    ),
 
     path('account/', include('accounts.urls')),
 
-    path('',include('posts.urls')),
+    path('',include('posts.urls'))
 ]
