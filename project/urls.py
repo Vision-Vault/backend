@@ -33,7 +33,7 @@ urlpatterns = [
         name="token_refresh",
     ),
 
-    path('account/', include('accounts.urls')),
+    path('profile/', include('accounts.urls')),
 
     path('',include('posts.urls'))
 ]
