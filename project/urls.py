@@ -35,7 +35,5 @@ urlpatterns = [
 
     path('account/', include('accounts.urls')),
 
-    path('',include('posts.urls')),
-
-
+    path('',include('posts.urls'))
 ]

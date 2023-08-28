@@ -11,4 +11,3 @@ class PostListView(ListView):
     template_name = 'posts/post_detail.html'
     context_object_name = 'posts'
     queryset = Post.objects.filter(status = Post.ACTIVE)
-
