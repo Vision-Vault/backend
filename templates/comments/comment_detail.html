@@ -21,9 +21,9 @@
                               </button>
                           </div>
                       </form>
-
+                      <h1>{{comment.body}}</h1>
                       <!-- list of comments  -->
-                      {% for comment in comment.Child_Comments.all%}
+                      {% for comment in comment.child_comments.all%}
 
                       <article class="media box mt-6">
                           <div class="media-content">

@@ -9,20 +9,21 @@ from accounts.models import CustomUser
 class Shared(models.Model):
     body=models.TextField()
     created_at=models.DateTimeField(auto_now_add=True)
-    user=models.ForeignKey(CustomUser,related_name='comments',on_delete=models.CASCADE)
 
     class Meta:
         abstract=True
 
 class Comment(Shared):
-    project=models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
+    project=models.ForeignKey(Post,on_delete=models.CASCADE,related_name='all_comments')
+    user=models.ForeignKey(CustomUser,related_name='comments',on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return self.user
+        return self.user.username
 
 class ChildComment(Shared):
-    parent_comment=models.ForeignKey(Comment,on_delete=models.CASCADE,related_name='Child_Comments')
+    parent_comment=models.ForeignKey(Comment,on_delete=models.CASCADE,related_name='child_comments')
+    user=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return self.user
+        return self.user.username
 
