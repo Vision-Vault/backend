@@ -39,7 +39,7 @@ class Post(models.Model):
     creator = models.ForeignKey(CustomUser,related_name="projects", on_delete=models.CASCADE)
     category = models.ForeignKey(Category,related_name="projects", on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(default=1, choices=[(i, i) for i in range(1, 11)])
-    status = models.CharField(max_length=20, choices=CHOICES, default='under_donation')
+    status = models.CharField(max_length=20, choices=CHOICES, default='incomplete')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
