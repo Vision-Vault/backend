@@ -2,13 +2,14 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from posts.models import Post
 from django.urls import reverse_lazy, reverse
+from accounts.models import CustomUser
 
 # Create your models here.
 
 class Shared(models.Model):
     body=models.TextField()
     created_at=models.DateTimeField(auto_now_add=True)
-    user=models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
+    user=models.ForeignKey(CustomUser,related_name='comments',on_delete=models.CASCADE)
 
     class Meta:
         abstract=True

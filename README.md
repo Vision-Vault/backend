@@ -1,3 +1,8 @@
+# A Must
+
+>pip install -r requirements.txt
+
+
 ## Husam & Muhammad
 
 * imaging library

@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
+from accounts.models import CustomUser
 
 
 class Category(models.Model):
@@ -35,7 +36,7 @@ class Post(models.Model):
     video = models.FileField(upload_to='uploads/project_videos/', null=True, blank=True)
     funding_goal = models.DecimalField(max_digits=10, decimal_places=2, default=None, null=False)
     allowed_donors = models.PositiveIntegerField(default=3)
-    creator = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    creator = models.ForeignKey(CustomUser,related_name="projects", on_delete=models.CASCADE)
     category = models.ForeignKey(Category,related_name="projects", on_delete=models.CASCADE)
     rating = models.PositiveIntegerField(default=1, choices=[(i, i) for i in range(1, 11)])
     status = models.CharField(max_length=20, choices=CHOICES, default='under_donation')
