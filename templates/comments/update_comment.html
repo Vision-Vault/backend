@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <div class="hero-body">
+      <div clss="container">
+          <section class="section">
+              <div class="column">
+                  <div class="column is-8 is-offset-2">
+                      <!-- comment form -->
+                      <form action="" method="post">
+                          {%  csrf_token %}
+                          <div class="field">
+                              <label for="{{ form.body.id_for_label }}">Add comment</label>
+                              <div class="control">
+                                  {{form.body}}
+                              </div>
+                          </div>
+                          <div>
+                              <button class="button is-success mt-4">
+                                  Submit
+                              </button>
+                          </div>
+                      </form>
+                  </div>
+
+          </section>
+      </div>
+
+  </div>
+
+</section>
+
+{% endblock content %}

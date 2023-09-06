@@ -20,4 +20,4 @@ class CommentForm2(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(CommentForm2, self).__init__(*args, **kwargs)
         self.fields['body'].widget.attrs['class'] ='input'
-        self.fields['body'].widget.attrs['placeholder'] ='Add comment'
+        self.fields['body'].widget.attrs['placeholder'] ='Replay'

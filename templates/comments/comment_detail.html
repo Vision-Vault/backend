@@ -6,11 +6,12 @@
           <section class="section">
               <div class="column">
                   <div class="column is-8 is-offset-2">
+                    <h1><strong>{{comments.body}}</strong></h1>
                       <!-- comment form -->
                       <form action="" method="post">
                           {%  csrf_token %}
                           <div class="field">
-                              <label for="{{ form.body.id_for_label }}">Add comment</label>
+                              <label for="{{ form.body.id_for_label }}">Replay</label>
                               <div class="control">
                                   {{form.body}}
                               </div>
@@ -21,9 +22,9 @@
                               </button>
                           </div>
                       </form>
-                      <h1>{{comment.body}}</h1>
+
                       <!-- list of comments  -->
-                      {% for comment in comment.child_comments.all%}
+                      {% for comment in comments.child_comments.all%}
 
                       <article class="media box mt-6">
                           <div class="media-content">
@@ -36,6 +37,10 @@
                               <div>
                                   {{ comment.body }}
                               </div>
+                              <strong>
+                                <a href="{% url 'update_coment_child' post_slug comments.id comment.id %}" > Update </a>
+                                <a href="{% url 'delete_child_comment' post_slug comments.id comment.id %}" > Delete </a>
+                            </strong>
                           </div>
                       </article>
 
